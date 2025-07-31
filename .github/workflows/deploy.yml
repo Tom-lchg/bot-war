@@ -1,4 +1,4 @@
-name: Déploiement sur Railway
+name: Deploy to Railway
 
 on:
   push:
@@ -7,28 +7,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      SVC_ID: my-service-id
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     steps:
-      - name: Checkout du code
-        uses: actions/checkout@v4
-
-      - name: Configuration de Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-
-      - name: Installation des dépendances
-        run: npm ci
-
-      - name: Tests (optionnel)
-        run: npm test
-
-      - name: Build de l'image Docker
-        run: docker build -t bot-war .
-
-      - name: Déploiement sur Railway
-        uses: railway/deploy@v1
-        with:
-          service: bot-war
-          token: ${{ secrets.RAILWAY_TOKEN }}
+      - uses: actions/checkout@v3
+      - run: railway up --service=${{ env.SVC_ID }}
