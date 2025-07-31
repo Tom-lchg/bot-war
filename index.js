@@ -1,9 +1,11 @@
+import cors from 'cors'
 import express from 'express'
 
 const app = express()
 const port = 3000
+app.use(cors('*'))
 
-app.get('/action', (req, res) => {
+app.get('/action', (_, res) => {
     res.send({
         move: 'UP',
         action: 'COLLECT'
