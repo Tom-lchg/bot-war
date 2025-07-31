@@ -11,12 +11,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
+
       - uses: actions/checkout@v3
       - name: Installation des dépendances
         run: npm install
 
-      - uses: actions/checkout@v3
-      - name: Lancement des tests
+      - name: Lancement des tests avec Jest
         run: npm test
 
   deploy:
