@@ -7,7 +7,7 @@ app.use(cors('*'))
 
 app.get('/action', (_, res) => {
     res.send({
-        move: 'UP',
+        move: 'DOWN',
         action: 'COLLECT'
     })
 })
