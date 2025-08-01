@@ -1,0 +1,6 @@
+services:
+  server:
+    build: .
+    container_name: bot-war-api
+    ports:
+      - '3000:3000'
