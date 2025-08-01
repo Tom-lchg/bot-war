@@ -8,7 +8,7 @@ app.use(cors('*'))
 app.use(express.json())
 
 // Move et action de base dans le jeu
-let savedParameters = { move: 'UP', action: 'COLLECT', randomEnabled: false }
+let savedParameters = { move: 'DOWN', action: 'COLLECT', randomEnabled: false }
 
 app.post('/send-parameter', (req, res) => {
     const { move, action, randomEnabled } = req.body
